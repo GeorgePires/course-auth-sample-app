@@ -1,0 +1,18 @@
+<div class="divide-y divide-zinc-700">
+  <div class="px-4 py-6 flex justify-between items-center">
+    <div>
+      <h1 class="text-xl"><%= @user.email %></h1>
+      <span class="text-sm text-gray-400"><%= @tweets.length %> tweets</span>
+    </div>
+    
+    <% unless @is_current_user %>
+      <%= form_with url: @following ? follow_path(params[:id]) : follows_path, method: @following ? :delete : :post do |f| %>
+        <%= f.hidden_field :followed_user_id, value: params[:id] %>
+        <%= f.submit @following ? "Unfollow" : "Follow", class: "rounded-full border border-white px-4 py-2" %>
+      <% end %>
+    <% end %>
+  </div>
+  <div>
+    <%= render partial: 'tweets/tweet', collection: @tweets %>
+  </div>
+</div>

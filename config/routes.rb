@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root "tweets#index"
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :tweets, only: [:index, :show, :create, :destroy]
+  resources :sessions, only: [:new, :create]
+  delete :logout, to: "sessions#destroy"
+  resources :users, only: [:new, :create, :show]
+  resources :follows, only: [:index, :create, :destroy]
 end
