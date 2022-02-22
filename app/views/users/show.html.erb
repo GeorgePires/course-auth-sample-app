@@ -5,7 +5,9 @@
       <span class="text-sm text-gray-400"><%= @tweets.length %> tweets</span>
     </div>
     
-    <% unless @is_current_user %>
+    <% if @is_current_user %>
+      <%= link_to 'Edit Profile', edit_user_path(@user), class: "rounded-full border border-white px-4 py-2" %>
+    <% else %>  
       <%= form_with url: @following ? follow_path(params[:id]) : follows_path, method: @following ? :delete : :post do |f| %>
         <%= f.hidden_field :followed_user_id, value: params[:id] %>
         <%= f.submit @following ? "Unfollow" : "Follow", class: "rounded-full border border-white px-4 py-2" %>

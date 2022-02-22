@@ -1,0 +1,18 @@
+<div class="min-h-full flex flex-col py-12 sm:px-6 lg:px-8">
+  <h2 class="text-3xl font-extrabold text-white">Edit your profile</h2>
+
+  <div class="w-full ">
+    <div class="py-8 space-y-2">
+      <%= form_with model: @user, scope: :user, class: "space-y-6" do |f| %>
+        <div class="space-y-1">
+          <%= f.label :email, class: "block text-sm font-medium text-white" %>
+          <%= f.email_field :email, autocomplete: "email", required: true, class: "appearance-none block w-full px-3 py-2 border border-gray-300 bg-transparent rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" %>
+        </div>
+
+        <div class="flex justify-end">
+          <%= f.submit "Update", class: "flex justify-center py-2 px-4 border border-transparent rounded-full shadow-sm text-sm font-bold text-white bg-sky-500 hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
