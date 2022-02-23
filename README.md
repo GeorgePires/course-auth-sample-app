@@ -1,24 +1,64 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Auth Sample App
 
-Things you may want to cover:
+Applicación base para el taller de [Autorización para Redes Sociales en Rails](https://codigofacilito.com/talleres/rails-autorizacion) en Código Facilito.
 
-* Ruby version
+En este taller aprenderemos a hacer el feature de cuentas privadas que vemos en Redes Sociales que usamos a diario.
+Para ello aprenderemos sobre autorización con Pundit y aplicaremos métodos avanzados de Active Record para poder integrar asociaciones múltiples entre modelos.
+Iremos desde la idea hasta la ejecución de un feature complejo.
 
-* System dependencies
+**Nivel:** Intermedio
 
-* Configuration
+**Requisitos previos:**
+Conocimientos de Ruby y Rails
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## Tech Stack
 
-* Deployment instructions
+**Client:** TailwindCSS
 
-* ...
+**Server:** Rails 7, Ruby 3.1, PostgreSQL 14.1, Yarn 1.22
+
+
+## Correr el proyect en local
+
+Clona el proyecto
+
+```bash
+  git clone git@github.com:KattyaCuevas/auth-sample-app.git
+```
+
+Navega al directorio del proyecto
+
+```bash
+  cd auth-sample-app
+```
+
+Instala las dependencias
+
+```bash
+  bundle install
+  yarn install
+```
+
+Preparar la base de datos:
+
+```bash
+  rails db:create
+  rails db:migrate
+  rails db:seed
+```
+
+Iniciar el servidor
+```bash
+  rails server
+```
+
+Corre el script de tailwindcss para que se genere cuando hagamos cambios
+
+```bash
+  yarn build:css --watch
+```
+
