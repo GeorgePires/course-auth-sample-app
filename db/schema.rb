@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_20_001846) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_03_181323) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_20_001846) do
     t.bigint "follower_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "pending"
     t.index ["followed_user_id"], name: "index_follows_on_followed_user_id"
     t.index ["follower_id"], name: "index_follows_on_follower_id"
   end
@@ -35,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_20_001846) do
     t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "private", default: false
   end
 
   add_foreign_key "follows", "users", column: "followed_user_id"
