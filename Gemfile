@@ -64,3 +64,5 @@ group :development do
   gem "faker"
 end
 
+
+gem "pundit", "~> 2.3"
