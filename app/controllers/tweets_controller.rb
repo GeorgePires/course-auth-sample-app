@@ -2,8 +2,11 @@ class TweetsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    followed_users = current_user.followed_users.pluck(:id)
-    @tweets = Tweet.where(author_id: followed_users << current_user.id).order(created_at: :desc)
+    followed_users = current_user.followed_users.joins(:given_follows).where(given_follows: { status: 'accepted'}).pluck(:id) << current_user.id
+    @tweets = Tweet
+      .includes(:author)
+      .where(author_id: followed_users)
+      .order(created_at: :desc)
     @tweet = Tweet.new
   end
 
