@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def show
     @is_current_user = current_user.id == @user.id
     @tweets = @user.tweets.order(created_at: :desc)
-    @following = @is_current_user ? false : current_user.followed_users.exists?(@user.id)
+    @follow_status = follow_status unless @is_current_user
   end
 
   def edit
@@ -48,5 +48,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :private)
+  end
+
+  def follow_status
+    follows = current_user.given_follows.where(followed_user: @user)
+    return "none" if follows.empty? || follows.all? { |f| f.status == "rejected" }
+    return "accepted" if follows.where(status: "accepted").any?
+    return "pending" if follows.where(status: "pending").any?
   end
 end
