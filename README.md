@@ -7,13 +7,6 @@ En este taller aprenderemos a hacer el feature de cuentas privadas que vemos en 
 Para ello aprenderemos sobre autorización con Pundit y aplicaremos métodos avanzados de Active Record para poder integrar asociaciones múltiples entre modelos.
 Iremos desde la idea hasta la ejecución de un feature complejo.
 
-**Nivel:** Intermedio
-
-**Requisitos previos:**
-Conocimientos de Ruby y Rails
-
-
-
 
 ## Tech Stack
 
@@ -27,13 +20,13 @@ Conocimientos de Ruby y Rails
 Clona el proyecto
 
 ```bash
-  git clone git@github.com:KattyaCuevas/auth-sample-app.git
+  git clone git@github.com:GeorgePires/course-auth-sample-app.git
 ```
 
 Navega al directorio del proyecto
 
 ```bash
-  cd auth-sample-app
+  cd course-auth-sample-app
 ```
 
 Instala las dependencias
