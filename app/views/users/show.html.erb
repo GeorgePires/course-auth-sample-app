@@ -6,15 +6,30 @@
     </div>
     
     <% if @is_current_user %>
-      <%= link_to 'Edit Profile', edit_user_path(@user), class: "rounded-full border border-white px-4 py-2" %>
-    <% else %>  
-      <%= form_with url: @following ? follow_path(params[:id]) : follows_path, method: @following ? :delete : :post do |f| %>
-        <%= f.hidden_field :followed_user_id, value: params[:id] %>
-        <%= f.submit @following ? "Unfollow" : "Follow", class: "rounded-full border border-white px-4 py-2" %>
+      <%= link_to "Edit Profile", edit_user_path(@user), class: "rounded-full border border-white px-4 py-2" %>
+    <% else %>
+      <% if @follow_status == "none" %>
+        <%= form_with url: follows_path, method: :post do |f| %>
+          <%= f.hidden_field :followed_user_id, value: params[:id] %>
+          <%= f.submit "Follow", class: "rounded-full border border-white px-4 py-2" %>
+        <% end %>
+      <% elsif @follow_status == "accepted" %>
+        <%= form_with url: follow_path(params[:id]), method: :delete do |f| %>
+          <%= f.submit "Unfollow", class: "rounded-full border border-white px-4 py-2" %>
+        <% end %>
+      <% elsif @follow_status == "pending" %>
+        <span>Waiting for approval</span>
+        <%= form_with url: follow_path(params[:id]), method: :delete do |f| %>
+          <%= f.submit "Cancel", class: "rounded-full border border-white px-4 py-2" %>
+        <% end %>
       <% end %>
     <% end %>
   </div>
-  <div>
-    <%= render partial: 'tweets/tweet', collection: @tweets %>
-  </div>
+  <% if policy(@user).show_tweets? %>
+    <div>
+      <%= render partial: "tweets/tweet", collection: @tweets %>
+    </div>
+  <% else %>
+    <h1 class="p-4 text-center font-semibold">Private account</h1>
+  <% end %>
 </div>
