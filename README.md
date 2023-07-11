@@ -1,11 +1,11 @@
 
 # Auth Sample App
 
-Applicación base para el taller de [Autorización para Redes Sociales en Rails](https://codigofacilito.com/talleres/rails-autorizacion) en Código Facilito.
+Base application for the workshop [Authorization for Social Networks in Rails](https://codigofacilito.com/talleres/rails-autorizacion) in Código Facilito.
 
-En este taller aprenderemos a hacer el feature de cuentas privadas que vemos en Redes Sociales que usamos a diario.
-Para ello aprenderemos sobre autorización con Pundit y aplicaremos métodos avanzados de Active Record para poder integrar asociaciones múltiples entre modelos.
-Iremos desde la idea hasta la ejecución de un feature complejo.
+In this workshop we will learn to make the feature of private accounts that we see in Social Networks that we use daily.
+For this we will learn about authorization with Pundit and we will apply advanced methods of Active Record to be able to integrate multiple associations between models.
+We will go from the idea to the execution of a complex feature.
 
 
 ## Tech Stack
@@ -15,28 +15,28 @@ Iremos desde la idea hasta la ejecución de un feature complejo.
 **Server:** Rails 7, Ruby 3.1, PostgreSQL 14.1, Yarn 1.22
 
 
-## Correr el proyect en local
+## Initial settings to run the project
 
-Clona el proyecto
+Clone the project
 
 ```bash
   git clone git@github.com:GeorgePires/course-auth-sample-app.git
 ```
 
-Navega al directorio del proyecto
+Enter the cloned directory
 
 ```bash
   cd course-auth-sample-app
 ```
 
-Instala las dependencias
+Install dependencies
 
 ```bash
   bundle install
   yarn install
 ```
 
-Preparar la base de datos:
+Prepare the database:
 
 ```bash
   rails db:create
@@ -44,12 +44,12 @@ Preparar la base de datos:
   rails db:seed
 ```
 
-Iniciar el servidor
+Start server
 ```bash
   rails server
 ```
 
-Corre el script de tailwindcss para que se genere cuando hagamos cambios
+Run the tailwindcss script so that it is generated when we make changes
 
 ```bash
   yarn build:css --watch
